@@ -149,49 +149,6 @@ body{
   box-shadow:0 0 24px rgba(92,255,92,.28);
 }
 
-.progress-block{
-  margin-top:18px;
-}
-
-.progress-label{
-  margin:0 0 8px;
-  color:var(--muted);
-  font-size:14px;
-}
-
-.progress{
-  position:relative;
-  height:12px;
-  border:1px solid var(--line);
-  border-radius:999px;
-  overflow:hidden;
-  background:#061006;
-}
-
-.progress::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  width:68%;
-  background:linear-gradient(90deg, var(--accent-2), var(--accent));
-  box-shadow:0 0 16px rgba(92,255,92,.28);
-  animation:loadbar 3.8s ease-in-out infinite;
-}
-
-@keyframes loadbar{
-  0%{width:14%}
-  30%{width:42%}
-  55%{width:68%}
-  75%{width:82%}
-  100%{width:14%}
-}
-
-.progress-meta{
-  margin-top:8px;
-  color:#6ea56e;
-  font-size:13px;
-}
-
 .hero-img{
   margin-top:26px;
   border:1px solid var(--line);
@@ -318,12 +275,6 @@ body{
         <p class="line"><span class="prompt">$</span> wget https://github.com/esokullu/turkix-site/releases/download/v1.0/turkix-boot.iso</p>
 
         <a href="https://github.com/esokullu/turkix-site/releases/download/v1.0/turkix-boot.iso" class="btn">ISO indir</a>
-
-        <div class="progress-block">
-          <div class="progress-label">downloading archive...</div>
-          <div class="progress"></div>
-          <div class="progress-meta">saved 12.4 MB / 47.8 MB</div>
-        </div>
 
         <div class="hero-img">
           <img src="assets/boot-screen.webp" alt="Turkix boot screen">
