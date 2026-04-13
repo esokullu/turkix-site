@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Turkix</title>
+
+<style>
+:root{
+  --bg:#071107;
+  --bg-2:#030703;
+  --panel:#091309;
+  --panel-2:#0d180d;
+  --line:#183218;
+  --line-soft:#102410;
+  --text:#b7ffb7;
+  --muted:#79b379;
+  --accent:#5CFF5C;
+  --accent-2:#2fd12f;
+  --max:1100px;
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  color:var(--text);
+  font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background:
+    radial-gradient(circle at top, rgba(92,255,92,.07), transparent 28%),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.02) 0px,
+      rgba(255,255,255,.02) 1px,
+      transparent 2px,
+      transparent 4px
+    ),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+}
+
+.wrap{
+  width:min(100% - 32px, var(--max));
+  margin:auto;
+}
+
+.hero{
+  padding:56px 0 42px;
+}
+
+.terminal{
+  background:linear-gradient(180deg, rgba(8,18,8,.96), rgba(4,10,4,.98));
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.38),
+    inset 0 1px 0 rgba(255,255,255,.03);
+}
+
+.term-bar{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 14px;
+  border-bottom:1px solid var(--line-soft);
+  background:linear-gradient(180deg, rgba(14,24,14,.98), rgba(8,17,8,.98));
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#7fb37f;
+  opacity:.9;
+}
+
+.term-title{
+  margin-left:8px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.term-body{
+  padding:34px 24px 30px;
+}
+
+.logo-wrap{
+  text-align:center;
+  margin:0 0 26px;
+}
+
+.logo{
+  width:190px;
+  max-width:60vw;
+  display:inline-block;
+  image-rendering:auto;
+}
+
+.line{
+  margin:0 0 10px;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.7;
+  word-break:break-word;
+}
+
+.prompt{
+  color:var(--accent);
+  font-weight:700;
+}
+
+.cursor{
+  display:inline-block;
+  width:.62em;
+  height:1.08em;
+  margin-left:2px;
+  background:var(--accent);
+  vertical-align:-0.18em;
+  animation:blink 1s steps(1,end) infinite;
+  box-shadow:0 0 10px rgba(92,255,92,.35);
+}
+
+@keyframes blink{
+  0%, 49%{opacity:1}
+  50%, 100%{opacity:0}
+}
+
+.btn{
+  display:inline-block;
+  margin-top:16px;
+  padding:14px 22px;
+  border:1px solid var(--accent);
+  border-radius:8px;
+  color:#041004;
+  background:var(--accent);
+  text-decoration:none;
+  font-weight:700;
+  transition:transform .18s ease, opacity .18s ease, box-shadow .18s ease;
+  box-shadow:0 0 18px rgba(92,255,92,.18);
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+  opacity:.96;
+  box-shadow:0 0 24px rgba(92,255,92,.28);
+}
+
+.progress-block{
+  margin-top:18px;
+}
+
+.progress-label{
+  margin:0 0 8px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.progress{
+  position:relative;
+  height:12px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  overflow:hidden;
+  background:#061006;
+}
+
+.progress::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  width:68%;
+  background:linear-gradient(90deg, var(--accent-2), var(--accent));
+  box-shadow:0 0 16px rgba(92,255,92,.28);
+  animation:loadbar 3.8s ease-in-out infinite;
+}
+
+@keyframes loadbar{
+  0%{width:14%}
+  30%{width:42%}
+  55%{width:68%}
+  75%{width:82%}
+  100%{width:14%}
+}
+
+.progress-meta{
+  margin-top:8px;
+  color:#6ea56e;
+  font-size:13px;
+}
+
+.hero-img{
+  margin-top:26px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+  background:#000;
+}
+
+.hero-img img{
+  width:100%;
+  display:block;
+}
+
+.gallery{
+  padding:26px 0 70px;
+  display:grid;
+  gap:16px;
+  grid-template-columns:repeat(3, 1fr);
+}
+
+.card{
+  background:linear-gradient(180deg, rgba(8,18,8,.96), rgba(5,11,5,.98));
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+
+.card img{
+  width:100%;
+  display:block;
+  height:100%;
+  object-fit:cover;
+}
+
+.footer{
+  padding:0 0 42px;
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.footer a{
+  color:var(--accent);
+  text-decoration:none;
+}
+
+.footer a:hover{
+  text-decoration:underline;
+}
+
+@media (max-width: 900px){
+  .gallery{
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px){
+  .wrap{
+    width:min(100% - 20px, var(--max));
+  }
+
+  .term-body{
+    padding:22px 16px 22px;
+  }
+
+  .logo{
+    width:160px;
+  }
+
+  .line{
+    font-size:14px;
+  }
+
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="terminal">
+      <div class="term-bar">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <div class="term-title">turkix@archive:~</div>
+      </div>
+
+      <div class="term-body">
+        <div class="logo-wrap">
+          <img src="assets/logo_transparent.png" class="logo" alt="Turkix logo">
+        </div>
+
+        <p class="line"><span class="prompt">$</span> ls<span class="cursor"></span></p>
+        <p class="line">turkix.iso</p>
+        <p class="line"><span class="prompt">$</span> wget https://aaronswtech.com/turkix.iso</p>
+
+        <a href="https://aaronswtech.com/turkix.iso" class="btn">ISO indir</a>
+
+        <div class="progress-block">
+          <div class="progress-label">downloading archive...</div>
+          <div class="progress"></div>
+          <div class="progress-meta">saved 12.4 MB / 47.8 MB</div>
+        </div>
+
+        <div class="hero-img">
+          <img src="assets/boot-screen.webp" alt="Turkix boot screen">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap gallery">
+  <div class="card">
+    <img src="assets/desktop-2.jpg" alt="">
+  </div>
+
+  <div class="card">
+    <img src="assets/control-center.avif" alt="">
+  </div>
+
+  <div class="card">
+    <img src="assets/installer.png" alt="">
+  </div>
+
+  <div class="card">
+    <img src="assets/desktop-1.webp" alt="">
+  </div>
+
+  <div class="card">
+    <img src="assets/desktop-3.webp" alt="">
+  </div>
+</section>
+
+<div class="footer">
+  <a href="https://emresokullu.com" target="_blank" rel="noopener noreferrer">Emre Sokullu</a>
+</div>
+
+</body>
+</html>
